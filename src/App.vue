@@ -1,11 +1,16 @@
 <script setup lang="ts"></script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <main>
+    <el-card>
+      1234 Test 测试
+      <template #footer> 本应用使用了 MiSans 字体 </template>
+    </el-card>
+  </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+main {
+  background-color: red;
+}
+</style>
