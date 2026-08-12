@@ -1,8 +1,19 @@
 html,
 body,
 [class|='el'] {
-  // 这里只放字体名称，由于 MonospaceTypewriter 字体的许可证需求，
+  // 这里只放字体名称，由于 MonospaceTypewriter 字体的许可证要求，
   // 如果需要此字体以获得更还原的体验，请自行下载
   // 对于 MiSans 字体，应合规要求仅通过 CDN 引入，可在 index.html 查看
   font-family: 'MiSans', var(--el-font-family);
+}
+
+body {
+  width: 100svw;
+  height: 100svh;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
