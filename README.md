@@ -21,7 +21,7 @@
 
 ## 应用链接
 
-[https://doclove2generatename.netlify.app/#/](https://doclove2generatename.netlify.app/#/)
+[https://doclove2generatename.netlify.app/#/](https://doclovecelquotes.netlify.app/#/)
 
 ## 做点贡献
 
@@ -49,7 +49,7 @@ SSH：`git clone git@github.com:docccccccccccc/CelestialQuoteNew.git`
 ## 项目结构
 
 ```
-incremental-gamer-name-generator/
+CelestialQuoteNew/
 ├─ .vscode/           VSCode 编辑器设置
 ├─ .editorconfig
 ├─ .oxlintrc.json     Oxlint 配置
