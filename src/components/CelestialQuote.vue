@@ -92,16 +92,28 @@ onMounted(() => {
       </span>
     </div>
     <div>
-      <span class="celquote-outer-btn celquote-outer-up-btn" v-show="celQuoteOuterBtn.up">
+      <span
+        class="celquote-outer-btn celquote-outer-up-btn"
+        :class="{ 'celquote-btn-disabled': !celQuoteOuterBtn.up }"
+      >
         <font-awesome-icon icon="fas fa-chevron-circle-up" />
       </span>
-      <span class="celquote-outer-btn celquote-outer-down-btn" v-show="celQuoteOuterBtn.down">
+      <span
+        class="celquote-outer-btn celquote-outer-down-btn"
+        :class="{ 'celquote-btn-disabled': !celQuoteOuterBtn.down }"
+      >
         <font-awesome-icon icon="fas fa-chevron-circle-down" />
       </span>
-      <span class="celquote-outer-btn celquote-outer-left-btn" v-show="celQuoteOuterBtn.left">
+      <span
+        class="celquote-outer-btn celquote-outer-left-btn"
+        :class="{ 'celquote-btn-disabled': !celQuoteOuterBtn.left }"
+      >
         <font-awesome-icon icon="fas fa-chevron-circle-left" />
       </span>
-      <span class="celquote-outer-btn celquote-outer-right-btn" v-show="celQuoteOuterBtn.right">
+      <span
+        class="celquote-outer-btn celquote-outer-right-btn"
+        :class="{ 'celquote-btn-disabled': !celQuoteOuterBtn.right }"
+      >
         <font-awesome-icon icon="fas fa-chevron-circle-right" />
       </span>
     </div>
@@ -257,7 +269,7 @@ onMounted(() => {
   transform: translateY(-50%);
 }
 
-.celquote-disabled {
+.celquote-btn-disabled {
   opacity: 0.4;
   cursor: default;
 }
