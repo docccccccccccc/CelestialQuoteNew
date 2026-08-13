@@ -27,7 +27,11 @@ const celQuoteOptionsFormValue = useCelQuoteOptionsStore().value
           >
         </main>
         <template #footer>
-          <el-text size="large">本应用使用了 MiSans 字体 </el-text>
+          <el-text size="large">
+            本应用使用了 MiSans 字体和 MonospaceTypewriter 字体。请注意，对于 MonospaceTypewriter
+            字体，由于字体本身的许可证要求，应用本身并未提供。
+            如果你需要此字体以获得更还原的视觉体验，请自行下载并安装此字体。
+          </el-text>
         </template>
       </el-card>
     </div>

@@ -46,10 +46,19 @@ onMounted(() => {
 
 <template>
   <div class="celquote-container">
-    <p style="text-align: center">
-      你现在正在预览生成效果.
-      <el-button type="primary" @click="celQuoteOptionsFormValue.generated = false">退出</el-button>
-    </p>
+    <div style="text-align: center; margin-top: 16px">
+      <el-text tag="p">
+        你现在正在预览生成效果。
+        <el-button type="primary" @click="celQuoteOptionsFormValue.generated = false"
+          >退出</el-button
+        >
+      </el-text>
+      <el-text tag="p">
+        请注意，对于原版游戏中使用的英文字体，由于字体本身的许可证要求，应用本身并未提供。
+        如果你需要此字体以获得更还原的视觉体验，请自行下载并安装此字体。
+      </el-text>
+      <el-text> 字体名称：MonospaceTypewriter 字体原作者：Manfred Klein </el-text>
+    </div>
     <span class="celquote-close" v-show="celQuoteBtnPosition === 'outer'">
       <font-awesome-icon icon="fas fa-circle-xmark" />
     </span>
@@ -146,13 +155,10 @@ onMounted(() => {
 .celquote-main {
   width: 300px;
   height: 300px;
-  /* top: calc(0rem + 50vh); */
-  /* transform: translate(-50%, -50%) scale(1); */
   opacity: 1;
   visibility: visible;
   z-index: 0;
   font-size: 14px;
-  /* padding: 10px; */
   display: flex;
   position: absolute;
   align-items: center;
@@ -162,6 +168,8 @@ onMounted(() => {
   justify-content: space-between;
   transform: translate(-50%, -50%) scale(1);
   background-color: rgb(0, 0, 0);
+  border-radius: 10px;
+  font-family: 'MonospaceTypewriter', 'MiSans', var(--el-font-family);
 }
 
 .celquote-bg {
