@@ -7,18 +7,13 @@ import { SYMBOLS_FOR_BG } from '@/consts/bgPresets'
 import { useCelQuoteOptionsStore } from '@/stores/celQuoteOptionsStore'
 const celQuoteOptionsFormValue = useCelQuoteOptionsStore().value
 
-// 这里的 callback 是个回调函数喵~
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const loadSymbolPreset = (_s: string, callback: any) => {
-  callback(SYMBOLS_FOR_BG)
-}
-
 import { ElMessage } from 'element-plus'
 import {
   formatListForAcceptProp,
   formatListTextForTooltip,
   ACCEPTED_BG_IMG_FORMATS,
 } from '@/consts/acceptedBgImgFormats'
+import ApplySymbolPresetBtn from './ApplySymbolPresetBtn.vue'
 const handleUpload = () => {
   const imgUploaderElement = document.getElementById('img-uploader') as HTMLInputElement
   imgUploaderElement.value = '' // 清空
@@ -90,11 +85,34 @@ const handleUpload = () => {
       </el-radio-group>
     </el-form-item>
     <el-form-item v-show="celQuoteOptionsFormValue.bgType === 'symbol'" label="字符（仅支持单个）">
-      <el-autocomplete
-        maxlength="1"
-        v-model="celQuoteOptionsFormValue.bg.symbol"
-        :fetch-suggestions="loadSymbolPreset"
-      />
+      <el-input maxlength="1" v-model="celQuoteOptionsFormValue.bg.symbol" />
+    </el-form-item>
+    <el-form-item v-show="celQuoteOptionsFormValue.bgType === 'symbol'" label="字符预设-天神">
+      <el-space wrap>
+        <ApplySymbolPresetBtn
+          v-for="celSymbol in SYMBOLS_FOR_BG.cels"
+          :key="celSymbol"
+          :applied-symbol="celSymbol"
+        />
+      </el-space>
+    </el-form-item>
+    <el-form-item v-show="celQuoteOptionsFormValue.bgType === 'symbol'" label="字符预设-符文">
+      <el-space wrap>
+        <ApplySymbolPresetBtn
+          v-for="glyphSymbol in SYMBOLS_FOR_BG.glyphs"
+          :key="glyphSymbol"
+          :applied-symbol="glyphSymbol"
+        />
+      </el-space>
+    </el-form-item>
+    <el-form-item v-show="celQuoteOptionsFormValue.bgType === 'symbol'" label="字符预设-符文炼金">
+      <el-space wrap>
+        <ApplySymbolPresetBtn
+          v-for="resSymbol in SYMBOLS_FOR_BG.alchemyRes"
+          :key="resSymbol"
+          :applied-symbol="resSymbol"
+        />
+      </el-space>
     </el-form-item>
     <el-form-item v-show="celQuoteOptionsFormValue.bgType === 'icon'" label="Font Awesome 图标类名">
       <el-input
