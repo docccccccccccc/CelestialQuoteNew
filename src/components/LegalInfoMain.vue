@@ -83,8 +83,6 @@
       - MIT<br />
       <el-link underline="always" href="https://github.com/oxc-project/oxc">oxlint@1.74.0</el-link>
       - MIT<br />
-      <el-link underline="always" href="https://github.com/vuejs/pinia">pinia@4.0.2</el-link> -
-      MIT<br />
       <el-link underline="always" href="https://github.com/prettier/prettier"
         >prettier@3.9.5</el-link
       >

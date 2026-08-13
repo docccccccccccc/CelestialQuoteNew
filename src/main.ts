@@ -1,5 +1,4 @@
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
 import App from './App.vue'
 
 const app = createApp(App)
@@ -21,6 +20,5 @@ import 'element-plus/theme-chalk/dark/css-vars.css'
 import '@/styles/global.scss'
 
 app.component('font-awesome-icon', FontAwesomeIcon)
-app.use(createPinia())
 app.use(ElementPlus)
 app.mount('#app')
