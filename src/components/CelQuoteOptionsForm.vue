@@ -122,7 +122,6 @@ const handleUpload = () => {
       <el-text v-if="celQuoteOptionsFormValue.bg.img === ''">无图片</el-text>
       <el-image v-else :src="celQuoteOptionsFormValue.bg.img" style="width: 160px; height: 160px" />
     </el-form-item>
-
     <el-form-item label="按钮位置">
       <el-radio-group v-model="celQuoteOptionsFormValue.buttons.position">
         <el-radio-button label="外侧" value="outer" />
