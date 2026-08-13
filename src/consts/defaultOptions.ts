@@ -1,6 +1,6 @@
-import { type CelQuoteOptionsForm } from '@/stores/celQuoteOptionsStore'
+import { type CelQuoteOptionsFormInterface } from '@/stores/celQuoteOptionsStore'
 
-export const DEFAULT_CEL_QUOTE_OPTIONS: CelQuoteOptionsForm = {
+export const DEFAULT_CEL_QUOTE_OPTIONS: CelQuoteOptionsFormInterface = {
   name: 'Teresa',
   color: '#5151EC',
   content: 'We have been observing you.',

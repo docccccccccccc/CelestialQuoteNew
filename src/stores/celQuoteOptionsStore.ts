@@ -15,7 +15,7 @@ export enum InnerButtons {
 }
 
 // 定义语录生成选项的接口
-export interface CelQuoteOptionsForm {
+export interface CelQuoteOptionsFormInterface {
   name: string
   color: string
   content: string
@@ -33,7 +33,7 @@ export interface CelQuoteOptionsForm {
 }
 
 export const useCelQuoteOptionsStore = () => {
-  const value = reactive<CelQuoteOptionsForm>(DEFAULT_CEL_QUOTE_OPTIONS)
+  const value = reactive<CelQuoteOptionsFormInterface>(DEFAULT_CEL_QUOTE_OPTIONS)
 
   return { value }
 }
