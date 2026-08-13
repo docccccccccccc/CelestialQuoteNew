@@ -292,7 +292,7 @@ onMounted(() => {
 .celquote-confirm-btn {
   position: absolute;
   bottom: 15px;
-  left: calc(50% - 10px);
+  // left: calc(50% - 10px);
   font-size: 150%;
   cursor: pointer;
 }
