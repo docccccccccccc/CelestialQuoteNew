@@ -98,24 +98,28 @@ onMounted(() => {
       <span
         class="celquote-outer-btn celquote-outer-up-btn"
         :class="{ 'celquote-btn-disabled': !celQuoteOuterBtn.up }"
+        v-show="celQuoteBtnPosition === 'outer'"
       >
         <font-awesome-icon icon="fas fa-chevron-circle-up" />
       </span>
       <span
         class="celquote-outer-btn celquote-outer-down-btn"
         :class="{ 'celquote-btn-disabled': !celQuoteOuterBtn.down }"
+        v-show="celQuoteBtnPosition === 'outer'"
       >
         <font-awesome-icon icon="fas fa-chevron-circle-down" />
       </span>
       <span
         class="celquote-outer-btn celquote-outer-left-btn"
         :class="{ 'celquote-btn-disabled': !celQuoteOuterBtn.left }"
+        v-show="celQuoteBtnPosition === 'outer'"
       >
         <font-awesome-icon icon="fas fa-chevron-circle-left" />
       </span>
       <span
         class="celquote-outer-btn celquote-outer-right-btn"
         :class="{ 'celquote-btn-disabled': !celQuoteOuterBtn.right }"
+        v-show="celQuoteBtnPosition === 'outer'"
       >
         <font-awesome-icon icon="fas fa-chevron-circle-right" />
       </span>
