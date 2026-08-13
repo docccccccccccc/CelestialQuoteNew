@@ -1,15 +1,18 @@
 <script setup lang="ts">
 // Element Plus 配置
 import { zhCn } from 'element-plus/es/locales.mjs'
+import { ref } from 'vue'
 
 import CelQuoteOptionsForm from './components/CelQuoteOptionsForm.vue'
 import ColorSchemeSwitch from './components/ColorSchemeSwitch.vue'
 import CelestialQuote from './components/CelestialQuote.vue'
+import LegalInfoMain from './components/LegalInfoMain.vue'
 
 import { useCelQuoteOptionsStore } from '@/stores/celQuoteOptionsStore'
 import { exportOptionsTo } from './utils/exportOptions.ts'
 import { importOptionsFrom } from './utils/importOptions.ts'
 const celQuoteOptionsFormValue = useCelQuoteOptionsStore().value
+const legalInfoVisible = ref<boolean>(false)
 </script>
 
 <template>
@@ -27,9 +30,7 @@ const celQuoteOptionsFormValue = useCelQuoteOptionsStore().value
           <div class="use-space-between">
             <div>
               <el-button-group>
-                <el-button @click="celQuoteOptionsFormValue.generated = true" type="primary">
-                  生成
-                </el-button>
+                <el-button @click="celQuoteOptionsFormValue.generated = true"> 生成 </el-button>
                 <el-button @click="exportOptionsTo('clipboard')"> 导出到剪贴板 </el-button>
                 <el-button @click="exportOptionsTo('file')"> 导出到文件 </el-button>
               </el-button-group>
@@ -43,15 +44,28 @@ const celQuoteOptionsFormValue = useCelQuoteOptionsStore().value
           </div>
         </main>
         <template #footer>
-          <el-text size="large">
-            本应用使用了 MiSans 字体和 MonospaceTypewriter 字体。请注意，对于 MonospaceTypewriter
-            字体，由于字体本身的许可证要求，应用本身并未提供。
-            如果你需要此字体以获得更还原的视觉体验，请自行下载并安装此字体。
-          </el-text>
+          <el-space spacer="|">
+            <el-text>Made by doctypehtml</el-text>
+            <el-link href="https://space.bilibili.com/3546694681626801">
+              <font-awesome-icon icon="fab fa-bilibili" />
+            </el-link>
+            <el-link href="https://github.com/docccccccccccc/">
+              <font-awesome-icon icon="fab fa-github" />
+            </el-link>
+            <el-link href="https://github.com/docccccccccccc/CelestialQuoteNew">仓库链接</el-link>
+            <el-button link @click="legalInfoVisible = true">法律信息</el-button>
+          </el-space>
         </template>
       </el-card>
     </div>
     <CelestialQuote v-if="celQuoteOptionsFormValue.generated" />
+    <el-drawer direction="btt" size="50%" v-model="legalInfoVisible">
+      <template #header>法律信息</template>
+      <LegalInfoMain />
+      <template #footer>
+        <el-button @click="legalInfoVisible = false">我知道了</el-button>
+      </template>
+    </el-drawer>
   </el-config-provider>
 </template>
 
