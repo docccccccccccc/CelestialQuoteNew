@@ -53,6 +53,7 @@ const legalInfoVisible = ref<boolean>(false)
               <font-awesome-icon icon="fab fa-github" />
             </el-link>
             <el-link href="https://github.com/docccccccccccc/CelestialQuoteNew">仓库链接</el-link>
+            <el-link href="https://doclovecelquotes-old.netlify.app">旧版生成器链接</el-link>
             <el-button link @click="legalInfoVisible = true">法律信息</el-button>
           </el-space>
         </template>
