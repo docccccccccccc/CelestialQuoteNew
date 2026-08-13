@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="./logos/logo.png" width="144px" alt="天神语录生成器 Logo" />
+  <img src="./logo/logo.png" width="144px" alt="天神语录生成器 Logo" />
   <div>天神语录生成器</div>
 </h1>
 
