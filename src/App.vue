@@ -12,7 +12,7 @@ const celQuoteOptionsFormValue = useCelQuoteOptionsStore().value
 
 <template>
   <el-config-provider :locale="zhCn">
-    <div class="celquoteoptions-wrapper">
+    <div class="celquoteoptions-wrapper" v-show="!celQuoteOptionsFormValue.generated">
       <el-card class="celquoteoptions-card">
         <template #header>
           <header class="celquoteoptions-header">

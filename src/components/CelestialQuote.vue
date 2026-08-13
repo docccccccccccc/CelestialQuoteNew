@@ -45,8 +45,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="celquote-container" @click="celQuoteOptionsFormValue.generated = false">
-    <p>你现在正在预览生成效果. 单击以退出.</p>
+  <div class="celquote-container">
+    <p style="text-align: center">
+      你现在正在预览生成效果.
+      <el-button type="primary" @click="celQuoteOptionsFormValue.generated = false">退出</el-button>
+    </p>
     <span class="celquote-close" v-show="celQuoteBtnPosition === 'outer'">
       <font-awesome-icon icon="fas fa-circle-xmark" />
     </span>
