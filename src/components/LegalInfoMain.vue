@@ -2,9 +2,10 @@
   <article>
     <el-text size="large" tag="h2"> 关于字体 </el-text>
     <el-text tag="p">
-      本应用使用了 MiSans 字体和 MonospaceTypewriter 字体。 MiSans
-      是小米科技有限责任公司开发的字体，版权归小米科技有限责任公司所有。
-      <br />请注意，对于 MonospaceTypewriter 字体，由于字体本身的许可证要求，应用本身并未提供。
+      本应用使用了 MiSans 字体和 MonospaceTypewriter 字体。<br />
+      MiSans 是小米科技有限责任公司设计的字体，版权归其所有。<br />
+      MonospaceTypewriter 是 Manfred Klein 设计的字体，版权归其所有。 <br />
+      请注意，对于 MonospaceTypewriter 字体，由于字体本身的许可证要求，应用本身并未提供。
       如果你需要此字体以获得更还原的视觉体验，请自行下载并安装此字体。
     </el-text>
     <br />

@@ -169,6 +169,9 @@ onMounted(() => {
   transform: translate(-50%, -50%) scale(1);
   background-color: rgb(0, 0, 0);
   border-radius: 10px;
+  // 这里只放字体名称，由于 MonospaceTypewriter 字体的许可证要求，
+  // 如果需要此字体以获得更还原的体验，请自行下载
+  // 对于 MiSans 字体，应合规要求仅通过 CDN 引入，可在 index.html 查看
   font-family: 'MonospaceTypewriter', 'MiSans', var(--el-font-family);
 }
 
