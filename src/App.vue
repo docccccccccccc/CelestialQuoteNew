@@ -4,6 +4,10 @@ import { zhCn } from 'element-plus/es/locales.mjs'
 
 import CelQuoteOptionsForm from './components/CelQuoteOptionsForm.vue'
 import ColorSchemeSwitch from './components/ColorSchemeSwitch.vue'
+import CelestialQuote from './components/CelestialQuote.vue'
+
+import { useCelQuoteOptionsStore } from '@/stores/celQuoteOptionsStore'
+const celQuoteOptionsFormValue = useCelQuoteOptionsStore().value
 </script>
 
 <template>
@@ -18,12 +22,16 @@ import ColorSchemeSwitch from './components/ColorSchemeSwitch.vue'
         </template>
         <main class="celquoteoptions-main">
           <CelQuoteOptionsForm />
+          <el-button @click="celQuoteOptionsFormValue.generated = true" type="primary"
+            >生成</el-button
+          >
         </main>
         <template #footer>
           <el-text size="large">本应用使用了 MiSans 字体 </el-text>
         </template>
       </el-card>
     </div>
+    <CelestialQuote v-if="celQuoteOptionsFormValue.generated" />
   </el-config-provider>
 </template>
 

@@ -13,4 +13,5 @@ export const DEFAULT_CEL_QUOTE_OPTIONS: CelQuoteOptionsFormInterface = {
   buttons: {
     position: 'outer',
   },
+  generated: false,
 }

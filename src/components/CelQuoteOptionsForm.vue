@@ -14,24 +14,27 @@ import {
   ACCEPTED_BG_IMG_FORMATS,
 } from '@/consts/acceptedBgImgFormats'
 import ApplySymbolPresetBtn from './ApplySymbolPresetBtn.vue'
-const handleUpload = () => {
-  const imgUploaderElement = document.getElementById('img-uploader') as HTMLInputElement
-  imgUploaderElement.value = '' // 清空
-  imgUploaderElement.click() // 点一下
 
-  imgUploaderElement?.addEventListener('change', (event) => {
+import { onMounted, ref } from 'vue'
+const imgUploaderElement = ref<HTMLInputElement>()
+
+onMounted(() => {
+  imgUploaderElement.value = document.getElementById('img-uploader') as HTMLInputElement
+
+  imgUploaderElement?.value.addEventListener('change', (event) => {
     const target = event.target as HTMLInputElement
     // 这里判断一下是否有文件
     if (target.files && target.files.length > 0) {
       const imgFile = target.files[0] as File
 
       // 检测图片格式是否被允许
-      const imgFileIsValid = ACCEPTED_BG_IMG_FORMATS.every(
+      const imgFileFormatIsValid = ACCEPTED_BG_IMG_FORMATS.some(
         // 每个都测一遍
-        (format) => imgFile.name.toUpperCase().indexOf(`.${format}`) !== -1,
+        (format) => imgFile.name.toUpperCase().endsWith(`.${format}`),
       )
+      const imgFileSizeIsValid = imgFile.size <= 512000 // 大小也要注意
 
-      if (imgFileIsValid) {
+      if (imgFileFormatIsValid && imgFileSizeIsValid) {
         const reader = new FileReader()
 
         reader.addEventListener('load', () => {
@@ -52,10 +55,23 @@ const handleUpload = () => {
 
         reader.readAsDataURL(imgFile)
       } else {
-        ElMessage.error('文件格式错误！')
+        if (!imgFileFormatIsValid) {
+          ElMessage.error('文件格式错误！')
+        }
+        if (!imgFileSizeIsValid) {
+          ElMessage.error(
+            `文件过大！（${Math.floor((imgFile.size / 1024) * 100) / 100} KB ≥ 500 KB）`,
+          ) // 这里取个整
+        }
       }
     }
   })
+})
+const handleUpload = () => {
+  if (imgUploaderElement.value) {
+    imgUploaderElement.value.value = '' // 清空（什么鬼两个 .value）（其实第一个 value 是元素的 ref ，第二个 value 是元素本身的 value）
+    imgUploaderElement.value?.click() // 点一下
+  }
 }
 </script>
 
@@ -122,10 +138,12 @@ const handleUpload = () => {
       />
     </el-form-item>
     <el-form-item v-show="celQuoteOptionsFormValue.bgType === 'img'" label="图片">
-      <el-tooltip
-        :content="`允许的图片格式：${formatListTextForTooltip}，注意，比例非 1:1 的图片会被拉伸`"
-        placement="right"
-      >
+      <el-tooltip placement="right">
+        <template #content>
+          允许大小 500 KB 以下的 {{ formatListTextForTooltip }} 图片，
+          <br />
+          注意，比例非 1:1 的图片会被拉伸
+        </template>
         <el-button type="primary" @click="handleUpload">上传文件</el-button>
       </el-tooltip>
       <!-- Element Plus 的上传组件我不会用喵，所以把原生上传拉进来了 -->

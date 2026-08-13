@@ -1,13 +1,13 @@
 import { DEFAULT_CEL_QUOTE_OPTIONS } from '@/consts/defaultOptions'
 import { reactive } from 'vue'
 
-export enum OuterButtons {
+export enum InnerButtons {
   Left = 'left',
   Right = 'right',
   Confirm = 'confirm',
 }
 
-export enum InnerButtons {
+export enum OuterButtons {
   Left = 'left',
   Right = 'right',
   Up = 'up',
@@ -30,6 +30,7 @@ export interface CelQuoteOptionsFormInterface {
     inner?: InnerButtons[]
     outer?: OuterButtons[]
   }
+  generated: boolean
 }
 
 export const useCelQuoteOptionsStore = () => {
