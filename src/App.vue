@@ -7,6 +7,7 @@ import ColorSchemeSwitch from './components/ColorSchemeSwitch.vue'
 import CelestialQuote from './components/CelestialQuote.vue'
 
 import { useCelQuoteOptionsStore } from '@/stores/celQuoteOptionsStore'
+import { exportOptionsTo } from './utils/exportOptions.ts'
 const celQuoteOptionsFormValue = useCelQuoteOptionsStore().value
 </script>
 
@@ -22,9 +23,13 @@ const celQuoteOptionsFormValue = useCelQuoteOptionsStore().value
         </template>
         <main class="celquoteoptions-main">
           <CelQuoteOptionsForm />
-          <el-button @click="celQuoteOptionsFormValue.generated = true" type="primary"
-            >生成</el-button
-          >
+          <el-button-group>
+            <el-button @click="celQuoteOptionsFormValue.generated = true" type="primary">
+              生成
+            </el-button>
+            <el-button @click="exportOptionsTo('clipboard')"> 导出到剪贴板 </el-button>
+            <el-button @click="exportOptionsTo('file')"> 导出到文件 </el-button>
+          </el-button-group>
         </main>
         <template #footer>
           <el-text size="large">
