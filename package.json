@@ -21,6 +21,7 @@
     "@fortawesome/free-solid-svg-icons": "^7.3.1",
     "@fortawesome/vue-fontawesome": "^3.3.3",
     "@vueuse/core": "^14.4.0",
+    "base64-js": "^1.5.1",
     "element-plus": "^2.14.4",
     "pinia": "^4.0.2",
     "sass-embedded": "^1.100.0",

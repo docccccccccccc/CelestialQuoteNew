@@ -1,11 +1,15 @@
+import { OPTIONS_DATA_FORMAT } from '@/consts/optionsDataFormat'
 import { useCelQuoteOptionsStore } from '@/stores/celQuoteOptionsStore'
-import { useBase64 } from '@vueuse/core'
+import { fromByteArray } from 'base64-js'
 import { ElMessage } from 'element-plus'
 const celQuoteOptionsFormValue = useCelQuoteOptionsStore().value
 
-export const exportOptionsTo = (to: 'clipboard' | 'file') => {
-  const { base64 } = useBase64(celQuoteOptionsFormValue, { dataUrl: false })
-  const exportedOptionsText = `CelestialQuoteOptionDataFormatVersion2${base64.value}EndOfCelestialQuoteOptionData` // 这里模仿的就是 AD 的存档格式
+export const exportOptionsTo = async (to: 'clipboard' | 'file') => {
+  const encoder = new TextEncoder()
+  // 等待结果
+  const base64Result = fromByteArray(encoder.encode(JSON.stringify(celQuoteOptionsFormValue)))
+
+  const exportedOptionsText = `${OPTIONS_DATA_FORMAT.PREFIX}${base64Result}${OPTIONS_DATA_FORMAT.SUFFIX}` // 这里模仿的就是 AD 的存档格式
 
   // 导出到剪贴板
   if (to === 'clipboard') {

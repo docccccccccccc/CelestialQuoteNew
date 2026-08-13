@@ -8,6 +8,7 @@ import CelestialQuote from './components/CelestialQuote.vue'
 
 import { useCelQuoteOptionsStore } from '@/stores/celQuoteOptionsStore'
 import { exportOptionsTo } from './utils/exportOptions.ts'
+import { importOptionsFrom } from './utils/importOptions.ts'
 const celQuoteOptionsFormValue = useCelQuoteOptionsStore().value
 </script>
 
@@ -16,20 +17,30 @@ const celQuoteOptionsFormValue = useCelQuoteOptionsStore().value
     <div class="celquoteoptions-wrapper" v-show="!celQuoteOptionsFormValue.generated">
       <el-card class="celquoteoptions-card">
         <template #header>
-          <header class="celquoteoptions-header">
+          <header class="celquoteoptions-header use-space-between">
             <el-text size="large" tag="h1">天神语录生成器</el-text>
             <ColorSchemeSwitch />
           </header>
         </template>
         <main class="celquoteoptions-main">
           <CelQuoteOptionsForm />
-          <el-button-group>
-            <el-button @click="celQuoteOptionsFormValue.generated = true" type="primary">
-              生成
-            </el-button>
-            <el-button @click="exportOptionsTo('clipboard')"> 导出到剪贴板 </el-button>
-            <el-button @click="exportOptionsTo('file')"> 导出到文件 </el-button>
-          </el-button-group>
+          <div class="use-space-between">
+            <div>
+              <el-button-group>
+                <el-button @click="celQuoteOptionsFormValue.generated = true" type="primary">
+                  生成
+                </el-button>
+                <el-button @click="exportOptionsTo('clipboard')"> 导出到剪贴板 </el-button>
+                <el-button @click="exportOptionsTo('file')"> 导出到文件 </el-button>
+              </el-button-group>
+            </div>
+            <div>
+              <el-button-group>
+                <el-button @click="importOptionsFrom('clipboard')"> 从剪贴板导入 </el-button>
+                <el-button @click="importOptionsFrom('file')"> 从文件导入 </el-button>
+              </el-button-group>
+            </div>
+          </div>
         </main>
         <template #footer>
           <el-text size="large">
@@ -56,7 +67,7 @@ const celQuoteOptionsFormValue = useCelQuoteOptionsStore().value
     max-width: 1080px;
   }
 
-  .celquoteoptions-header {
+  .use-space-between {
     display: flex;
     justify-content: space-between;
   }
